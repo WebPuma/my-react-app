@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
+  background: #f7fafe;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+}
