@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* keep content near the top */
   min-height: 100vh;
   background: #f0f4f8;
+  padding-top: 12px; /* small breathing room from the very top */
 }
 
 .landing-container h1 {
