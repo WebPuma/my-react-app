@@ -9,9 +9,11 @@ function LandingPage() {
   return (
     <div className="landing-container">
       <NavBar />
-      <Bumpups />
-      <Timestamp />
-      <Footer />
+      <div className="page-content">
+        <Bumpups />
+        <Timestamp />
+        <Footer />
+      </div>
     </div>
   );
 }

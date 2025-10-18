@@ -1,6 +1,8 @@
 .bumpups {
-  margin: 16px 0;
-  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px 24px;
   background: #eafcff;
   border-radius: 12px;
   text-align: center;

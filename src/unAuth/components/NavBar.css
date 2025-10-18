@@ -3,8 +3,8 @@
   /* Make the white pill wrap BOTH the logo and the links */
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 28px;
+  justify-content: flex-start;
+  gap: 24px;
   padding: 14px 32px;
   background: #fff;
   border-radius: 40px;
@@ -24,9 +24,11 @@
 .navbar-links {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 40px;
   list-style: none;
   margin: 0;
+  margin-left: auto;
 }
 
 .navbar-links li {
