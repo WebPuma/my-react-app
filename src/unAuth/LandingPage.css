@@ -7,6 +7,7 @@
   min-height: 100vh;
   background: #f0f4f8;
   padding-top: 12px; /* small breathing room from the very top */
+  --page-gutter: clamp(16px, 4vw, 32px);
 }
 
 .page-content {
@@ -16,7 +17,7 @@
   flex-direction: column;
   gap: 16px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 var(--page-gutter, 32px);
   box-sizing: border-box;
 }
 

@@ -1,10 +1,157 @@
 .bumpups {
   width: 100%;
   box-sizing: border-box;
+}
+
+.bumpups-hero {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  border-radius: 28px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 72px 72px 200px;
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(17, 38, 74, 0.25);
+}
+
+.bumpups-hero__content {
+  max-width: 760px;
+}
+
+.bumpups-hero__content h1 {
+  margin: 0 0 20px;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.05;
+  text-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  color: #fff;
+}
+
+.bumpups-hero__content h2 {
   margin: 0;
-  padding: 20px 24px;
-  background: #eafcff;
-  border-radius: 12px;
-  text-align: center;
-  font-size: 18px;
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.45;
+  opacity: 0.95;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.bumpups-search {
+  position: absolute;
+  left: 50%;
+  bottom: 48px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  padding: 14px 16px;
+  box-shadow: 0 24px 45px rgba(18, 42, 84, 0.25);
+  width: calc(100% - 220px);
+  max-width: 800px;
+  backdrop-filter: blur(6px);
+}
+
+.bumpups-search input {
+  flex: 1;
+  border: none;
+  font-size: 1rem;
+  padding: 12px 18px;
+  border-radius: 999px;
+  outline: none;
+  color: #1d3c70;
+  background: transparent;
+}
+
+.bumpups-search input::placeholder {
+  color: rgba(29, 60, 112, 0.7);
+}
+
+.bumpups-search button {
+  background: #2f6ffb;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 12px 24px rgba(47, 111, 251, 0.35);
+}
+
+.bumpups-search button:hover {
+  background: #1f57d0;
+  transform: translateY(-1px);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .bumpups-hero {
+    min-height: 420px;
+    padding: 56px 48px 180px;
+    background-attachment: scroll;
+  }
+
+  .bumpups-hero__content h1 {
+    font-size: 2.4rem;
+  }
+
+  .bumpups-hero__content h2 {
+    font-size: 1.2rem;
+  }
+
+  .bumpups-search {
+    width: calc(100% - 120px);
+  }
+}
+
+@media (max-width: 640px) {
+  .bumpups-hero {
+    align-items: flex-start;
+    padding: 40px 24px 140px;
+    background-attachment: scroll;
+  }
+
+  .bumpups-hero__content h1 {
+    font-size: 2rem;
+  }
+
+  .bumpups-hero__content h2 {
+    font-size: 1rem;
+  }
+
+  .bumpups-search {
+    position: static;
+    transform: none;
+    width: 100%;
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 16px;
+    margin: 0 0 24px;
+  }
+
+  .bumpups-search button {
+    width: 100%;
+  }
 }
