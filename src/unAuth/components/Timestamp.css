@@ -2,9 +2,8 @@
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  padding: 20px 24px;
-  background: #eafce6;
-  border-radius: 12px;
-  text-align: center;
+  padding: 32px var(--page-pad, 48px);
+  background: #f4fde9;
+  text-align: left;
   font-size: 18px;
 }

@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   min-height: 500px;
-  border-radius: 28px;
+  box-sizing: border-box;
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -17,9 +17,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 72px 72px 200px;
+  padding: 72px var(--page-pad, 48px) 200px;
   color: #fff;
-  box-shadow: 0 24px 60px rgba(17, 38, 74, 0.25);
 }
 
 .bumpups-hero__content {
@@ -46,19 +45,21 @@
 
 .bumpups-search {
   position: absolute;
-  left: 50%;
+  left: var(--page-pad, 48px);
+  right: var(--page-pad, 48px);
   bottom: 48px;
-  transform: translateX(-50%);
+  transform: none;
   display: flex;
   align-items: center;
   gap: 12px;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 999px;
+  border-radius: 0;
   padding: 14px 16px;
   box-shadow: 0 24px 45px rgba(18, 42, 84, 0.25);
-  width: calc(100% - 220px);
-  max-width: 800px;
+  width: auto;
+  max-width: none;
   backdrop-filter: blur(6px);
+  box-sizing: border-box;
 }
 
 .bumpups-search input {
@@ -66,7 +67,7 @@
   border: none;
   font-size: 1rem;
   padding: 12px 18px;
-  border-radius: 999px;
+  border-radius: 0;
   outline: none;
   color: #1d3c70;
   background: transparent;
@@ -83,7 +84,7 @@
   font-size: 1rem;
   font-weight: 600;
   padding: 12px 32px;
-  border-radius: 999px;
+  border-radius: 0;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
   box-shadow: 0 12px 24px rgba(47, 111, 251, 0.35);
@@ -109,7 +110,7 @@
 @media (max-width: 900px) {
   .bumpups-hero {
     min-height: 420px;
-    padding: 56px 48px 180px;
+    padding: 56px var(--page-pad, 32px) 180px;
     background-attachment: scroll;
   }
 
@@ -122,14 +123,15 @@
   }
 
   .bumpups-search {
-    width: calc(100% - 120px);
+    left: var(--page-pad, 32px);
+    right: var(--page-pad, 32px);
   }
 }
 
 @media (max-width: 640px) {
   .bumpups-hero {
     align-items: flex-start;
-    padding: 40px 24px 140px;
+    padding: 40px var(--page-pad, 24px) 140px;
     background-attachment: scroll;
   }
 
@@ -146,12 +148,14 @@
     transform: none;
     width: 100%;
     flex-direction: column;
-    border-radius: 24px;
+    border-radius: 0;
     padding: 16px;
     margin: 0 0 24px;
+    box-sizing: border-box;
   }
 
   .bumpups-search button {
     width: 100%;
+    border-radius: 0;
   }
 }

@@ -1,25 +1,18 @@
 
+
 .navbar {
-  /* Make the white pill wrap BOTH the logo and the links */
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 24px;
-  padding: 14px var(--page-gutter, 32px);
-  background: #fff;
-  border-radius: 40px;
-  box-shadow: 0 1px 4px rgba(44, 62, 80, 0.04);
-
-  /* Center and allow it to grow up to 1200px */
+  padding: 0;
+  border-bottom: 1px solid rgba(29, 60, 112, 0.1);
   width: 100%;
-  max-width: 1200px;
-  margin: 12px auto 0;
-  box-sizing: border-box;
 }
 
 .logo {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
 }
 
 .navbar-links {
@@ -33,17 +26,15 @@
 }
 
 .navbar-links li {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   color: #1d3c70;
-  padding: 12px 28px;
-  border-radius: 28px;
+  padding: 10px 16px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .navbar-links li.active {
-  background: #2f6ffb;
-  color: #fff;
+  color: #2f6ffb;
   font-weight: 600;
 }
