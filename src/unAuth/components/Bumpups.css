@@ -95,6 +95,16 @@
   transform: translateY(-1px);
 }
 
+.bumpups-search__error {
+  margin: 16px var(--page-pad, 48px) 0;
+  color: #ffe4e4;
+  background: rgba(255, 0, 0, 0.12);
+  border: 1px solid rgba(255, 93, 93, 0.5);
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  max-width: 520px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

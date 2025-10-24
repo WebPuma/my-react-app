@@ -6,9 +6,9 @@
   justify-content: flex-start;
   min-height: 100vh;
   background: #f0f4f8;
-  padding: 16px var(--page-pad) 48px;
+  padding: 0 var(--page-pad);
   box-sizing: border-box;
-  gap: 32px;
+  gap: 0;
 }
 
 .page-content {
