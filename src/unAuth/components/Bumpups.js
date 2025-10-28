@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import "./Bumpups.css";
 import heroImage from "../../assets/bumpups-hero.jpg";
+import { httpsCallable } from "firebase/functions";
+import { functions } from "../../firebase";
 
 const YOUTUBE_URL_REGEX = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})([&?].*)?$/i;
 
@@ -10,6 +12,8 @@ function Bumpups() {
   const [fetchError, setFetchError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [videoDetails, setVideoDetails] = useState(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generationStatus, setGenerationStatus] = useState("");
 
   const youtubeApiKey = useMemo(() => process.env.REACT_APP_YOUTUBE_API_KEY?.trim(), []);
 
@@ -61,6 +65,7 @@ function Bumpups() {
 
     setIsLoading(true);
     setFetchError("");
+    setGenerationStatus("");
     try {
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`
@@ -93,6 +98,28 @@ function Bumpups() {
       console.error("Failed to fetch YouTube details:", error);
     } finally {
       setIsLoading(false);
+      setIsGenerating(false);
+    }
+  };
+
+  const handleGenerateTimestamps = async () => {
+    if (!videoDetails?.videoUrl) {
+      return;
+    }
+
+    setIsGenerating(true);
+    setGenerationStatus("");
+    try {
+      const callable = httpsCallable(functions, "generate_timestamps");
+      const result = await callable({ url: videoDetails.videoUrl });
+      console.log("generate_timestamps result:", result.data);
+      console.log("generate_timestamps payload:", result.data?.raw);
+      setGenerationStatus("Timestamps generated - check the console output.");
+    } catch (error) {
+      console.error("generate_timestamps failed:", error);
+      setGenerationStatus(error.message || "Unable to generate timestamps. Please try again.");
+    } finally {
+      setIsGenerating(false);
     }
   };
 
@@ -122,7 +149,6 @@ function Bumpups() {
               aria-label="Paste a YouTube video link"
               value={videoUrl}
               onChange={(event) => setVideoUrl(event.target.value)}
-              pattern={YOUTUBE_URL_REGEX.source}
               title="Enter a YouTube URL such as https://youtu.be/VIDEOID"
               required
             />
@@ -153,6 +179,18 @@ function Bumpups() {
                     <p className="bumpups-preview__eyebrow">Video detected</p>
                     <h3>{videoDetails.title}</h3>
                     {videoDetails.channel && <p className="bumpups-preview__channel">{videoDetails.channel}</p>}
+                    <div className="bumpups-preview__actions">
+                      <button
+                        type="button"
+                        onClick={handleGenerateTimestamps}
+                        disabled={isGenerating}
+                      >
+                        {isGenerating ? "Generating..." : "Generate Timestamps"}
+                      </button>
+                      {generationStatus && (
+                        <p className="bumpups-preview__status-message">{generationStatus}</p>
+                      )}
+                    </div>
                   </div>
                 </>
               )}

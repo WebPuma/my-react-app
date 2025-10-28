@@ -184,6 +184,43 @@
   color: rgba(15, 33, 66, 0.72);
 }
 
+.bumpups-preview__actions {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.bumpups-preview__actions button {
+  background: linear-gradient(135deg, #ff3d9a 0%, #7f52ff 100%);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 16px 30px rgba(255, 61, 154, 0.25);
+}
+
+.bumpups-preview__actions button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.bumpups-preview__actions button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+  box-shadow: none;
+}
+
+.bumpups-preview__status-message {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(15, 33, 66, 0.8);
+}
+
 .bumpups-preview__status {
   margin: 0;
   font-size: 1.05rem;

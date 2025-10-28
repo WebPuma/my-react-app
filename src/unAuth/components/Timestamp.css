@@ -116,6 +116,192 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+.timestamp__tool {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  margin: 72px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: rgba(12, 16, 46, 0.65);
+  border-radius: 24px;
+  padding: 28px 32px 32px;
+  box-shadow: 0 26px 48px rgba(8, 9, 40, 0.55);
+  border: 1px solid rgba(124, 109, 212, 0.18);
+  backdrop-filter: blur(8px);
+}
+
+.timestamp__form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.timestamp__form input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(127, 82, 255, 0.3);
+  background: rgba(20, 26, 64, 0.8);
+  color: #fff;
+  transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.timestamp__form input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.timestamp__form input:focus {
+  outline: none;
+  border-color: rgba(89, 154, 255, 0.85);
+  background: rgba(20, 26, 64, 0.95);
+  box-shadow: 0 0 0 3px rgba(93, 124, 255, 0.18);
+}
+
+.timestamp__form button {
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7f52ff 0%, #2f6ffb 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 26px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 18px 36px rgba(47, 111, 251, 0.35);
+}
+
+.timestamp__form button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+.timestamp__form button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.timestamp__error {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255, 87, 125, 0.18);
+  border: 1px solid rgba(255, 124, 158, 0.4);
+  color: #ffb3c3;
+  font-size: 0.95rem;
+}
+
+.timestamp__preview {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: center;
+  background: rgba(15, 19, 50, 0.85);
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(124, 109, 212, 0.2);
+}
+
+.timestamp__preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(10, 8, 40, 0.45);
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.timestamp__preview--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(47, 63, 125, 0.35);
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 600;
+  min-height: 140px;
+  text-align: center;
+  padding: 12px;
+}
+
+.timestamp__preview-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.timestamp__preview-eyebrow {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(129, 167, 255, 0.85);
+}
+
+.timestamp__preview-details h3 {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  color: #fff;
+}
+
+.timestamp__preview-channel {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.timestamp__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.timestamp__actions button {
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff3d9a 0%, #7f52ff 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 18px 36px rgba(255, 61, 154, 0.25);
+}
+
+.timestamp__actions button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+.timestamp__actions button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.timestamp__status {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(180, 199, 255, 0.9);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 900px) {
   .timestamp {
     padding: 72px var(--page-pad, 32px) 96px;
@@ -133,6 +319,24 @@
     bottom: 24px;
     height: 200px;
   }
+
+  .timestamp__tool {
+    padding: 24px 24px 28px;
+  }
+
+  .timestamp__preview {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .timestamp__actions {
+    align-items: stretch;
+  }
+
+  .timestamp__actions button {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 560px) {
@@ -144,5 +348,13 @@
     width: 72px;
     height: 72px;
     font-size: 28px;
+  }
+
+  .timestamp__form {
+    flex-direction: column;
+  }
+
+  .timestamp__form button {
+    width: 100%;
   }
 }

@@ -33,3 +33,10 @@ Press `Ctrl+C` in the terminal that is running the suite. An export will be writ
 - Everything: `firebase deploy`
 
 Remember to switch to the correct Firebase project alias (`firebase use <alias>`) before deploying.
+
+## Cloud Functions
+
+- `functions/main.py` exposes:
+  - `ping`: simple health-check endpoint (HTTP).
+  - `generate_timestamps`: callable function that proxies the Bumpups timestamp API. Front-end calls it with `{ url: "<youtube link>" }`.
+- Create `functions/.env` (ignored by Git) with `BUMPUPS_API_KEY=<your bumpups key>` before deploying or running the emulator.
