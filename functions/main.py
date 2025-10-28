@@ -2,20 +2,39 @@
 # To get started, simply uncomment the below code or create your own.
 # Deploy with `firebase deploy`
 
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+
+from firebase_admin import initialize_app
 from firebase_functions import https_fn
 from firebase_functions.options import set_global_options
-from firebase_admin import initialize_app
 
-# For cost control, you can set the maximum number of containers that can be
-# running at the same time. This helps mitigate the impact of unexpected
-# traffic spikes by instead downgrading performance. This limit is a per-function
-# limit. You can override the limit for each function using the max_instances
-# parameter in the decorator, e.g. @https_fn.on_request(max_instances=5).
+# Constrain the number of warm containers so unexpected spikes do not fan out costs.
 set_global_options(max_instances=10)
 
-# initialize_app()
-#
-#
-# @https_fn.on_request()
-# def on_request_example(req: https_fn.Request) -> https_fn.Response:
-#     return https_fn.Response("Hello world!")
+# Initialize the Admin SDK once when the function container boots.
+initialize_app()
+
+
+@https_fn.on_request()
+def ping(request: https_fn.Request) -> https_fn.Response:
+  """Basic health-check endpoint for monitoring or local smoke tests."""
+  if request.method not in ("GET", "HEAD"):
+    return https_fn.Response("Method Not Allowed", status=405)
+
+  payload = {
+      "status": "ok",
+      "timestamp": datetime.now(timezone.utc).isoformat(),
+  }
+
+  return https_fn.Response(
+      json.dumps(payload),
+      status=200,
+      headers={
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store",
+          "Access-Control-Allow-Origin": "*",
+      },
+  )
